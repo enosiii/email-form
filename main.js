@@ -1,5 +1,3 @@
-
-
 (function() {
   "use strict";
 
@@ -28,6 +26,9 @@
       // Hide the loading message and display the success message
       document.querySelector('.loading').style.display = 'none';
       document.querySelector('.sent-message').style.display = 'block';
+
+      // Clear the message field
+      document.getElementById("message-field").value = '';
     })
     .catch(error => {
       // Hide the loading message and display the error message
