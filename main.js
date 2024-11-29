@@ -7,7 +7,7 @@
 
     const formData = new FormData(this);
 
-    fetch("YOUR_WEB_APP_URL", {
+    fetch("https://script.google.com/macros/s/AKfycby7VjkpI9b7qz4rC9B5QOXNhkgwDVRy9C53HWxU2vL_S9hdE9Pei0gwEasQ2-Zflmcc/exec", {
       method: "POST",
       body: formData
     })
