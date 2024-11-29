@@ -1,3 +1,5 @@
+
+
 (function() {
   "use strict";
 
@@ -7,18 +9,29 @@
 
     const formData = new FormData(this);
 
+    // Show the loading message and hide other messages
+    document.querySelector('.loading').style.display = 'block';
+    document.querySelector('.sent-message').style.display = 'none';
+    document.querySelector('.error-message').style.display = 'none';
+
     fetch("https://script.google.com/macros/s/AKfycby7VjkpI9b7qz4rC9B5QOXNhkgwDVRy9C53HWxU2vL_S9hdE9Pei0gwEasQ2-Zflmcc/exec", {
       method: "POST",
       body: formData
     })
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+      return response.text();
+    })
     .then(data => {
-      // Display success message
+      // Hide the loading message and display the success message
+      document.querySelector('.loading').style.display = 'none';
       document.querySelector('.sent-message').style.display = 'block';
-      document.querySelector('.error-message').style.display = 'none';
     })
     .catch(error => {
-      // Display error message
+      // Hide the loading message and display the error message
+      document.querySelector('.loading').style.display = 'none';
       document.querySelector('.error-message').textContent = "Something went wrong. Please try again.";
       document.querySelector('.error-message').style.display = 'block';
     });
